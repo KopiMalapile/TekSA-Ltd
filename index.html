@@ -164,7 +164,6 @@
             display: inline-block;
         }
 
-
         input[type=submit]:hover, .btn:hover {
             background-color: #1B4F72;
         }
@@ -176,12 +175,16 @@
             }
 
             .sidebar {
-                display: block;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
             }
 
             .content {
-                margin-left: 0
-
+                margin-left: 0;
             }
 
             /* Stack cards vertically */
@@ -201,7 +204,6 @@
     </style>
 </head>
 <body>
-
     <!-- Menu Button for Mobile -->
     <button class="menu-button" onclick="toggleSidebar()">☰ Menu</button>
 
@@ -259,47 +261,37 @@
             <div class="content">
                 <div class="container">
                     <!-- Lead Tracking Card -->
-                    <div class="card">
-                        <h2>Lead Tracking</h2>
-                        <table>
-                            <tr>
-                                <th>Lead Name</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                            </tr>
-                            <tr>
-                                <td>John Mahlangu</td>
-                                <td>Mahlanguj@gmail.com</td>
-                                <td>New</td>
-                            </tr>
-                            <tr>
-                                <td>Jane Simelane</td>
-                                <td>janeS@outlook.com</td>
-                                <td>Contacted</td>
-                            </tr>
-                            <tr>
-                                <td>Mark Davis</td>
-                                <td>mark@eteksa.co.za</td>
-                                <td>Closed</td>
-                            </tr>
-                        </table>
-                        <button class="btn">Export Leads</button>
-                    </div>
-                </div>
+                   
+<div class="card lead-tracking-card">
+    <h2>Lead Tracking</h2>
+    <table>
+        <tr>
+            <th>Lead Name</th>
+            <th>Email</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>John Mahlangu</td>
+            <td>Mahlanguj@gmail.com</td>
+            <td>New</td>
+        </tr>
+        <tr>
+            <td>Jane Simelane</td>
+            <td>janeS@gmail.com</td>
+            <td>Active</td>
+        </tr>
+    </table>
+</div>
+
             </div>
+        </div>
+    </div>
+
     <script>
         // Toggle Sidebar Visibility on Mobile
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.classList.toggle("show");
-        }
-
-        // Search Functionality
-        function search(event) {
-            if (event.key === 'Enter' || event.type === 'click') {
-                const term = document.getElementById("searchTerm").value;
-                alert("Searching for: " + term);
-            }
         }
     </script>
 </body>

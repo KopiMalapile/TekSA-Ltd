@@ -64,8 +64,8 @@ body {
 }
 
 .input-box select {
-    background-color: transparent; /* Black background for select dropdown */
-    color: #161515; /* White font color */
+    background: rgba(0, 0, 0, 0.2);
+    
 }
 
 .input-box input::placeholder {

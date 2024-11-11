@@ -6,33 +6,23 @@
     <title>TekSA - Business Management Platform</title>
     <link rel="stylesheet" href="main.css">
     <style>
-        /* Base Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             display: flex;
-            flex-direction: column;
         }
-
-        /* Sidebar */
         .sidebar {
             background-color: #2E86C1;
             color: white;
             width: 220px;
-            height: 100vh;
+            min-height: 100vh;
             padding: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            z-index: 10;
         }
-
-        /* Sidebar Links */
         .sidebar a {
             color: white;
             text-decoration: none;
@@ -43,109 +33,78 @@
             background-color: #3498DB;
             text-align: center;
         }
-
         .sidebar a:hover {
             background-color: #1B4F72;
         }
-
-        /* Menu Button */
-        .menu-button {
-            background-color: #2980B9;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            font-size: 18px;
-            cursor: pointer;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 20;
-            display: none; /* Hide the menu button by default */
-        }
-
-        .menu-button:hover {
-            background-color: #1B4F72;
-        }
-
-        /* Header */
         .header {
             background-color: #2980B9;
             color: white;
             padding: 20px;
             text-align: center;
-            position: relative;
+            flex: 1;
         }
-
-        /* Header Top-right Links */
+        .content {
+            flex: 5;
+            padding: 20px;
+        }
         .header .top-right {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 20px;
+            right: 20px;
         }
-
         .header .top-right a, .header .top-right button {
             color: white;
             text-decoration: none;
+            margin: 0 10px;
             padding: 10px;
             background-color: #3498DB;
             border-radius: 5px;
             border: none;
             cursor: pointer;
-            margin: 5px;
         }
-
         .header .top-right a:hover, .header .top-right button:hover {
             background-color: #1B4F72;
         }
-
-        /* Content Container */
-        .content {
-            flex: 1;
-            padding: 20px;
-            margin-left: 220px;
-            transition: margin-left 0.3s;
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #2980B9;
+            padding: 10px;
         }
-
-        /* Container for Cards */
         .container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: space-between;
+            padding: 20px;
         }
-
-        /* Card Style */
         .card {
             background-color: white;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            flex: 1 1 100%; /* Default to full width */
+            width: 48%;
+            margin-bottom: 20px;
         }
-
         .card h2 {
             margin-top: 0;
         }
-
-        /* Table Styles */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
         }
-
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
             text-align: left;
         }
-
         th {
-            background-color: #2980B9;
+            background-color: #3498DB;
             color: white;
         }
-
-        /* Form and Button Styles */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        /* Original form input styling */
         input[type=text], input[type=email], select {
             width: 100%;
             padding: 10px;
@@ -153,73 +112,74 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-
         input[type=submit], .btn {
             background-color: #2980B9;
             color: white;
-            padding: 10px;
+            padding: 10px 15px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             display: inline-block;
         }
-
         input[type=submit]:hover, .btn:hover {
             background-color: #1B4F72;
         }
-
-        /* Responsive Adjustments for Mobile */
-        @media (max-width: 768px) {
-            .menu-button {
-                display: block;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-            }
-
-            .sidebar.show {
-                transform: translateX(0);
-            }
-
-            .content {
-                margin-left: 0;
-            }
-
-            /* Stack cards vertically */
-            .card {
-                width: 100%;
-            }
-
-            .header h1 {
-                font-size: 1.2em;
-            }
-
-            .header p, .content, .search-container input, .btn {
-                font-size: 0.9em;
-                padding: 8px;
-            }
+        /* Chatbot button styles */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2980B9;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .chat-button:hover {
+            background-color: #1B4F72;
+        }
+        /* Chat window */
+        .chat-window {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .chat-window header {
+            background-color: #2980B9;
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Menu Button for Mobile -->
-    <button class="menu-button" onclick="toggleSidebar()">☰ Menu</button>
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar">
         <h2>TekSA</h2>
         <a href="dashboard.html">Dashboard</a>
         <a href="crm.html">CRM</a>
         <a href="erp.html">ERP</a>
         <a href="inventory.html">Inventory</a>
         <a href="file.html">File Storage</a>
-        <a href="https://www.trade-alliance.africa">Ecommerce</a>
+        <a href="trade-alliance.africa">Ecommerce</a>
         <a href="logout.html">Logout</a>
     </div>
 
-    <!-- Main Content Area -->
     <div class="content">
         <div class="header">
             <h1>Welcome to TekSA</h1>
@@ -229,14 +189,13 @@
                 <input type="text" id="searchTerm" placeholder="Search TekSA..." onkeypress="search(event)">
                 <button onclick="search()">Search</button>
             </div>
-            <!-- Top-right Links -->
+            <!-- Top right section -->
             <div class="top-right">
                 <a href="login.html">Login</a>
                 <a href="#">Invite</a>
             </div>
         </div>
 
-        <!-- Cards Section -->
         <div class="container">
             <!-- Customer Management Card -->
             <div class="card">
@@ -258,41 +217,60 @@
                     <input type="submit" value="Send Email">
                 </form>
             </div>
-            <div class="content">
-                <div class="container">
-                    <!-- Lead Tracking Card -->
-                   
-<div class="card lead-tracking-card">
-    <h2>Lead Tracking</h2>
-    <table>
-        <tr>
-            <th>Lead Name</th>
-            <th>Email</th>
-            <th>Status</th>
-        </tr>
-        <tr>
-            <td>John Mahlangu</td>
-            <td>Mahlanguj@gmail.com</td>
-            <td>New</td>
-        </tr>
-        <tr>
-            <td>Jane Simelane</td>
-            <td>janeS@gmail.com</td>
-            <td>Active</td>
-        </tr>
-    </table>
-</div>
 
+            <!-- Lead Tracking Card -->
+            <div class="card">
+                <h2>Lead Tracking</h2>
+                <table>
+                    <tr>
+                        <th>Lead Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>John Mahlangu</td>
+                        <td>Mahlanguj@gmail.com</td>
+                        <td>New</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Simelane</td>
+                        <td>janeS@outlook.com</td>
+                        <td>Contacted</td>
+                    </tr>
+                    <tr>
+                        <td>Mark Davis</td>
+                        <td>mark@eteksa.co.za</td>
+                        <td>Closed</td>
+                    </tr>
+                </table>
+                <button class="btn">Export Leads</button>
             </div>
         </div>
     </div>
 
+    <!-- Chatbot button -->
+    <button class="chat-button" onclick="openChat()">Hi, how can I help you?</button>
+
+    <!-- Chat window -->
+    <div class="chat-window" id="chatWindow">
+        <header>Chat Support</header>
+        <p>Hello! How can I assist you today?</p>
+        <input type="text" placeholder="Type your message...">
+    </div>
+
     <script>
-        // Toggle Sidebar Visibility on Mobile
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.classList.toggle("show");
+        function openChat() {
+            const chatWindow = document.getElementById("chatWindow");
+            chatWindow.style.display = chatWindow.style.display === "none" || chatWindow.style.display === "" ? "block" : "none";
+        }
+
+        function search(event) {
+            if (event.type === 'keypress' && event.key !== 'Enter') return;
+            const searchTerm = document.getElementById("searchTerm").value.toLowerCase();
+            window.location.href = `/search.html?q=${encodeURIComponent(searchTerm)}`;
         }
     </script>
+    
+
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TekSA - Business Management Platform</title>
     <link rel="stylesheet" href="main.css">
     <style>
@@ -205,9 +206,160 @@ input[type=text], input[type=email], select {
     min-width: 300px;
 }
 
+    /* Invite button styling */
+    .invite-btn {
+        /*background-color: #00c4cc;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        position: relative; */
+
+        color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px;
+            background-color: #3498DB;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+    }
+
+    /* Notification bubble styling */
+    .notification-bubble {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: #f24d4d;
+        color: white;
+        font-size: 14px;
+        padding: 3px 8px;
+        border-radius: 50%;
+    }
+
+    /* Dropdown menu styling */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        background-color: #00c4cc;
+        border-radius: 8px;
+        padding: 15px;
+        width: 200px;
+        color: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+        /* Navbar styling */
+        .navbar {
+        position: relative;
+    }
+
+    /* Dropdown content styling */
+    .dropdown-content h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .dropdown-content p {
+        margin: 5px 0 15px;
+        font-size: 12px;
+        color: #e0f7fa;
+    }
+
+    /* Invite action button inside dropdown */
+    .invite-action {
+        background-color: #ffffff;
+        color: #00c4cc;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+
+
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  /* Hide the desktop-specific elements and add mobile layout adjustments */
+  .toolbar-mobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  /* Main content adjustments for mobile */
+  .content {
+    margin-top: 60px; /* Leave space for the toolbar */
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Desktop-specific styles */
+@media (min-width: 769px) {
+  .toolbar-mobile {
+    display: none;
+  }
+
+  /* Additional desktop layout adjustments */
+  .content {
+    padding: 20px;
+    font-size: 16px;
+  }
+}
+
+
+    /* Show dropdown when button is clicked */
+    .show {
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-250px);
+    }
+
+    .toolbar {
+        display: block;
+    }
+
+    .show-sidebar .sidebar {
+        transform: translateX(0);
+    }
+}
+
     </style>
 </head>
 <body>
+
+    <div class="toolbar-mobile" id="toolbarMobile">
+
+    <div class="sidebar">
+        <h2>TekSA</h2>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="crm.html">CRM</a>
+        <a href="erp.html">ERP</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="file.html">File Storage</a>
+        <a href="trade-alliance.africa">Ecommerce</a>
+        <a href="logout.html">Logout</a>
+    </div>
+        <button onclick="toggleToolbar()">Menu</button>
+    
+      </div>
+      
 
     <div class="sidebar">
         <h2>TekSA</h2>
@@ -232,7 +384,21 @@ input[type=text], input[type=email], select {
             <!-- Top right section -->
             <div class="top-right">
                 <a href="login.html">Login</a>
-                <a href="invite.html">Invite</a>
+                <div class="navbar">
+                    <button class="invite-btn" onclick="toggleDropdown()">Invite</button>
+                    <span class="notification-bubble">14</span>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu" id="inviteDropdown">
+                        <div class="dropdown-content">
+                            <h3>Invite Users</h3>
+                            <p>Why invite?</p>
+                            <button class="invite-action">+ Invite</button>
+                        </div>
+                    </div>
+                </div>
+                
+                
             </div>
         </div>
 
@@ -348,6 +514,26 @@ input[type=text], input[type=email], select {
             const chatWindow = document.getElementById("chatWindow");
             chatWindow.style.display = chatWindow.style.display === "none" || chatWindow.style.display === "" ? "block" : "none";
         }
+    </script>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("inviteDropdown");
+            dropdown.classList.toggle("show");
+    
+            // Close the dropdown if clicking outside
+            document.addEventListener("click", function(event) {
+                if (!dropdown.contains(event.target) && !event.target.matches(".invite-btn")) {
+                    dropdown.classList.remove("show");
+                }
+            });
+        }
+    </script>
+    <script>
+        function toggleToolbar() {
+  const toolbar = document.getElementById("toolbarMobile");
+  toolbar.classList.toggle("open");
+}
+
     </script>
 </body>
 </html>

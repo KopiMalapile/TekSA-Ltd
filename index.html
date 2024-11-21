@@ -318,7 +318,11 @@ input[type=submit]:hover, .btn:hover {
 <body>
 <!-- Mobile Toolbar with Sidebar -->
 <div class="toolbar-mobile" id="toolbarMobile">
-    <button onclick="toggleToolbar()" aria-label="Toggle Menu">Menu</button>
+    <div class="toolbar-mobile" id="toolbarMobile">
+    <button onclick="toggleToolbar()" aria-label="Toggle Menu">
+        <span class="icon">&#x22EE;</span> <!-- Vertical Ellipsis Icon -->
+    </button>
+    
     <div class="sidebar" id="mobileSidebar">
         <h2>TekSA</h2>
         <a href="dashboard.html">Dashboard</a>

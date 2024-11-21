@@ -188,15 +188,15 @@ body {
     transform: translateY(-2px);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .invitation-container {
         flex-direction: column;
+        padding: 10px;
     }
 
     .sidebar {
         width: 100%;
-        padding: 10px;
+        padding: 10px 5px;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -206,14 +206,14 @@ body {
     .sidebar .menu {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
         margin: 0;
     }
 
     .sidebar .menu li {
         flex: 1;
         text-align: center;
-        padding: 8px 5px;
+        padding: 8px;
         margin-bottom: 0;
     }
 
@@ -222,14 +222,27 @@ body {
     }
 
     .main-content {
-        margin: 10px;
-        padding: 15px;
+        margin: 10px 0;
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 8px;
     }
 
     .footer {
         justify-content: center;
+        gap: 10px;
+    }
+
+    .save-button, .close-button {
+        width: 100%;
+        text-align: center;
     }
 }
+
 </style>
 
 

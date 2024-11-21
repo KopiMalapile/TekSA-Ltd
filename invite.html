@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <style>
+    
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f8f9fc;
+    color: #444;
+}
+
+/* Layout */
+.invitation-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .menu {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.sidebar .menu li {
+    padding: 12px 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .menu li:hover {
+    background-color: #0056b3;
+    color: #f8f9fc;
+}
+
+.sidebar .user-limits {
+    font-size: 14px;
+    padding: 15px;
+    background-color: #0056b3;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.sidebar .user-limits span {
+    font-weight: bold;
+    color: #f8d775;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.header h2 {
+    font-size: clamp(20px, 2vw, 24px);
+    color: #007bff;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.header p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.content label {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#registration-link {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #555;
+    background-color: #f8f9fc;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.copy-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.options {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.options input {
+    margin-right: 10px;
+}
+
+/* Footer Buttons */
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.save-button,
+.close-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.save-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.close-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.close-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .invitation-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar .menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+    }
+
+    .sidebar .menu li {
+        flex: 1;
+        text-align: center;
+        padding: 8px 5px;
+        margin-bottom: 0;
+    }
+
+    .sidebar .user-limits {
+        display: none;
+    }
+
+    .main-content {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .footer {
+        justify-content: center;
+    }
+}
+</style>
+
+
+
+    </style>
+    <div class="invitation-container">
+        <div class="sidebar">
+            <ul class="menu">
+                <li>Invite via link</li>
+                <li>Invite via email or phone</li>
+                <li>Bulk invitation</li>
+                <li>Add new user</li>
+            </ul>
+            <div class="user-limits">
+               
+                <p>Users currently registered on your Website: <span>Unlimited</span></p>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <h2>Invite via link</h2>
+                <p>Allow quick registration</p>
+            </div>
+            <div class="content">
+                <label for="registration-link">Quick registration link</label>
+                <div class="input-group">
+                    <input id="registration-link" type="text" value="" readonly>
+                    <button class="copy-button">COPY LINK</button>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox">
+                        Request administrator approval to join
+                    </label>
+                </div>
+            </div>
+            <div class="footer">
+                <button class="save-button">SAVE</button>
+                <button class="close-button">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

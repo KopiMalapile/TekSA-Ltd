@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
     
     <title>TekSA - Business Management Platform</title>
 <link rel="stylesheet" href="main.css">
@@ -318,7 +320,6 @@ input[type=submit]:hover, .btn:hover {
 <body>
 <!-- Mobile Toolbar with Sidebar -->
 <div class="toolbar-mobile" id="toolbarMobile">
-    <div class="toolbar-mobile" id="toolbarMobile">
     <button onclick="toggleToolbar()" aria-label="Toggle Menu">
         <span class="icon">&#x22EE;</span> <!-- Vertical Ellipsis Icon -->
     </button>
@@ -485,10 +486,11 @@ input[type=submit]:hover, .btn:hover {
         <input type="text" placeholder="Type your message...">
     </div>
     <script>
- function toggleToolbar() {
+   function toggleToolbar() {
     const mobileSidebar = document.getElementById("mobileSidebar");
     mobileSidebar.classList.toggle("show");
 }
+
     function toggleChat() {
         const chatWindow = document.getElementById("chatWindow");
         chatWindow.style.display = chatWindow.style.display === "block" ? "none" : "block";

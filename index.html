@@ -222,6 +222,63 @@ input[type=submit]:hover, .btn:hover {
     cursor: pointer;
 }
 
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Show Dropdown */
+.dropdown-menu.show {
+    display: block; /* Display when toggled */
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    padding: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+.dropdown-content h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.dropdown-content .invite-action {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Mobile-specific Adjustments */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: fixed; /* Ensure it's accessible */
+        top: 60px; /* Adjust for smaller screens */
+        right: 10px;
+        width: 90%; /* Take more space on small screens */
+    }
+
+    .invite-btn {
+        width: 100%; /* Larger button for mobile */
+        text-align: center;
+    }
+}
+
 .notification-bubble {
     position: absolute;
     top: -5px;
@@ -363,14 +420,17 @@ input[type=submit]:hover, .btn:hover {
                 <a href="login.html">Login</a>
                 <div class="navbar">
                     <button class="invite-btn" onclick="toggleDropdown()">Invite</button>
-                    <span class="notification-bubble">14</span>
+                    <span class="notification-bubble">1</span>
                     
                     <!-- Dropdown Menu -->
                     <div class="dropdown-menu" id="inviteDropdown">
                         <div class="dropdown-content">
                             <h3>Invite Users</h3>
                             <p>Why invite?</p>
-                            <button class="invite-action">+ Invite</button>
+                            <a href="invite.html">
+                                <button class="invite-action">+ Invite</button>
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -489,6 +549,10 @@ input[type=submit]:hover, .btn:hover {
    function toggleToolbar() {
     const mobileSidebar = document.getElementById("mobileSidebar");
     mobileSidebar.classList.toggle("show");
+}
+function toggleDropdown() {
+            const dropdown = document.getElementById("inviteDropdown");
+            dropdown.classList.toggle("show");
 }
 
     function toggleChat() {

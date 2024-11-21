@@ -3,83 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <title>TekSA - Business Management Platform</title>
-    <link rel="stylesheet" href="main.css">
-    <style>
-     body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-        }
-        .sidebar {
-            background-color: #2E86C1;
-            color: white;
-            width: 220px;
-            min-height: 100vh;
-            padding: 0px 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-           
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            margin: 5px 0;
-            display: block;
-            border-radius: 10px;
-            background-color: #3498DB;
-            text-align: center;
-            
-        }
-        .sidebar a:hover {
-            background-color: #1B4F72;
-        }
+<link rel="stylesheet" href="main.css">
+<style>
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+}
 
-        .header {
-            background-color: #2980B9;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-        }
-        .content {
-            flex: 5;
-            padding: 20px;
-        }
-        .header .top-right {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .header .top-right a, .header .top-right button {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 10px;
-            background-color: #3498DB;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-        .header .top-right a:hover, .header .top-right button:hover {
-            background-color: #1B4F72;
-        }
+.sidebar {
+    background-color: #2E86C1;
+    color: white;
+    width: 220px;
+    min-height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    margin: 5px 0;
+    display: block;
+    border-radius: 10px;
+    background-color: #3498DB;
+    text-align: center;
+}
+
+.sidebar a:hover {
+    background-color: #1B4F72;
+}
+
+.header {
+    background-color: #2980B9;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.header .top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .top-right a, .header .top-right button {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #3498DB;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.header .top-right a:hover, .header .top-right button:hover {
+    background-color: #1B4F72;
+}
 
 .navbar {
     display: flex;
     justify-content: space-around;
     background-color: #2980B9;
     padding: 10px;
-}
-
-.content {
-    flex: 1;
-    padding: 20px;
 }
 
 .card {
@@ -134,65 +133,69 @@ tr:nth-child(even) {
 }
 
 input[type=text], input[type=email], select {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type=submit], .btn {
-            background-color: #2980B9;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: inline-block;
-        }
-        input[type=submit]:hover, .btn:hover {
-            background-color: #1B4F72;
-        }
-/* Chatbot button styles */
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=submit], .btn {
+    background-color: #2980B9;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover, .btn:hover {
+    background-color: #1B4F72;
+}
+
 .chat-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #2980B9;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .chat-button:hover {
-            background-color: #1B4F72;
-        }
-        /* Chat window */
-        .chat-window {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 300px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-        }
-        .chat-window header {
-            background-color: #2980B9;
-            color: white;
-            padding: 10px;
-            border-radius: 10px 10px 0 0;
-            text-align: center;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 10px;
-        }
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2980B9;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chat-button:hover {
+    background-color: #1B4F72;
+}
+
+.chat-window {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.chat-window header {
+    background-color: #2980B9;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+}
 
 .bottom-container {
     display: flex;
@@ -206,147 +209,117 @@ input[type=text], input[type=email], select {
     min-width: 300px;
 }
 
-    /* Invite button styling */
-    .invite-btn {
-        /*background-color: #00c4cc;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 20px;
-        cursor: pointer;
-        position: relative; */
-
-        color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 10px;
-            background-color: #3498DB;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-    }
-
-    /* Notification bubble styling */
-    .notification-bubble {
-        position: absolute;
-        top: -5px;
-        right: -10px;
-        background-color: #f24d4d;
-        color: white;
-        font-size: 14px;
-        padding: 3px 8px;
-        border-radius: 50%;
-    }
-
-    /* Dropdown menu styling */
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 30px;
-        right: 20px;
-        background-color: #00c4cc;
-        border-radius: 8px;
-        padding: 15px;
-        width: 200px;
-        color: white;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-        /* Navbar styling */
-        .navbar {
-        position: relative;
-    }
-
-    /* Dropdown content styling */
-    .dropdown-content h3 {
-        margin: 0;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .dropdown-content p {
-        margin: 5px 0 15px;
-        font-size: 12px;
-        color: #e0f7fa;
-    }
-
-    /* Invite action button inside dropdown */
-    .invite-action {
-        background-color: #ffffff;
-        color: #00c4cc;
-        border: none;
-        padding: 8px 16px;
-        font-size: 14px;
-        border-radius: 15px;
-        cursor: pointer;
-    }
-
-
-
-/* Mobile-specific styles */
-@media (max-width: 768px) {
-  /* Hide the desktop-specific elements and add mobile layout adjustments */
-  .toolbar-mobile {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
+.invite-btn {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
     padding: 10px;
-    z-index: 1000;
-  }
+    background-color: #3498DB;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
 
-  /* Main content adjustments for mobile */
-  .content {
-    margin-top: 60px; /* Leave space for the toolbar */
-    padding: 10px;
+.notification-bubble {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #f24d4d;
+    color: white;
     font-size: 14px;
-  }
+    padding: 3px 8px;
+    border-radius: 50%;
 }
 
-/* Desktop-specific styles */
-@media (min-width: 769px) {
-  .toolbar-mobile {
+.dropdown-menu {
     display: none;
-  }
-
-  /* Additional desktop layout adjustments */
-  .content {
-    padding: 20px;
-    font-size: 16px;
-  }
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background-color: #00c4cc;
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
+.navbar {
+    position: relative;
+}
 
-    /* Show dropdown when button is clicked */
-    .show {
-        display: block;
-    }
+.dropdown-content h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-    @media (max-width: 768px) {
+.dropdown-content p {
+    margin: 5px 0 15px;
+    font-size: 12px;
+    color: #e0f7fa;
+}
+
+.invite-action {
+    background-color: #ffffff;
+    color: #00c4cc;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
     .sidebar {
-        transform: translateX(-250px);
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1000;
     }
 
-    .toolbar {
-        display: block;
-    }
-
-    .show-sidebar .sidebar {
+    .sidebar.show {
         transform: translateX(0);
     }
+
+    .header .top-right {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .content {
+        margin-top: 60px;
+        padding: 10px;
+        font-size: 14px;
+    }
 }
+
+@media (min-width: 769px) {
+    .toolbar-mobile {
+        display: none;
+    }
+
+    .content {
+        padding: 20px;
+        font-size: 16px;
+    }
+}
+
+.show {
+    display: block;
+}
+
 
     </style>
 </head>
 <body>
-
-    <div class="toolbar-mobile" id="toolbarMobile">
-
-    <div class="sidebar">
+<!-- Mobile Toolbar with Sidebar -->
+<div class="toolbar-mobile" id="toolbarMobile">
+    <button onclick="toggleToolbar()" aria-label="Toggle Menu">Menu</button>
+    <div class="sidebar" id="mobileSidebar">
         <h2>TekSA</h2>
         <a href="dashboard.html">Dashboard</a>
         <a href="crm.html">CRM</a>
@@ -356,21 +329,20 @@ input[type=text], input[type=email], select {
         <a href="trade-alliance.africa">Ecommerce</a>
         <a href="logout.html">Logout</a>
     </div>
-        <button onclick="toggleToolbar()">Menu</button>
-    
-      </div>
-      
+</div>
 
-    <div class="sidebar">
-        <h2>TekSA</h2>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="crm.html">CRM</a>
-        <a href="erp.html">ERP</a>
-        <a href="inventory.html">Inventory</a>
-        <a href="file.html">File Storage</a>
-        <a href="trade-alliance.africa">Ecommerce</a>
-        <a href="logout.html">Logout</a>
-    </div>
+<!-- Desktop Sidebar -->
+<div class="sidebar" id="desktopSidebar">
+    <h2>TekSA</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="crm.html">CRM</a>
+    <a href="erp.html">ERP</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="file.html">File Storage</a>
+    <a href="trade-alliance.africa">Ecommerce</a>
+    <a href="logout.html">Logout</a>
+</div>
+
 
     <div class="content">
         <div class="header">
@@ -508,32 +480,14 @@ input[type=text], input[type=email], select {
         <p>Hello! How can I assist you today?</p>
         <input type="text" placeholder="Type your message...">
     </div>
-
     <script>
-        function openChat() {
-            const chatWindow = document.getElementById("chatWindow");
-            chatWindow.style.display = chatWindow.style.display === "none" || chatWindow.style.display === "" ? "block" : "none";
-        }
+    function toggleToolbar() {
+        const sidebar = document.getElementById("mobileSidebar");
+        sidebar.classList.toggle("open");
+    }
+    function toggleChat() {
+        const chatWindow = document.getElementById("chatWindow");
+        chatWindow.style.display = chatWindow.style.display === "block" ? "none" : "block";
+    }
     </script>
-    <script>
-        function toggleDropdown() {
-            const dropdown = document.getElementById("inviteDropdown");
-            dropdown.classList.toggle("show");
-    
-            // Close the dropdown if clicking outside
-            document.addEventListener("click", function(event) {
-                if (!dropdown.contains(event.target) && !event.target.matches(".invite-btn")) {
-                    dropdown.classList.remove("show");
-                }
-            });
-        }
-    </script>
-    <script>
-        function toggleToolbar() {
-  const toolbar = document.getElementById("toolbarMobile");
-  toolbar.classList.toggle("open");
-}
-
-    </script>
-</body>
 </html>
